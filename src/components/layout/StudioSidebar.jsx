@@ -2,44 +2,44 @@ import { Link, useLocation } from 'react-router-dom'
 import { cn } from '../../lib/cn'
 import Tooltip from '../ui/Tooltip'
 import {
-  LayoutDashboard, Building2, Wallet, Truck,
-  Wrench, Users, FolderOpen, MessageSquare, ListTodo,
-  ChevronLeft, ChevronRight, AlertTriangle, UserCircle, Send, Lock,
+  Grid3X3, Building, CalendarClock, Contact, FolderClosed,
+  UsersRound, Wallet2, TriangleAlert, PenTool, Truck,
+  MessagesSquare, SendHorizonal, PanelLeftClose, PanelLeftOpen, LockKeyhole,
 } from 'lucide-react'
 import { tickets } from '../../data/tickets'
 import { useAuth } from '../../context/AuthContext'
 
 const navSections = [
   {
-    label: 'Panoramica',
+    label: 'Generale',
     items: [
-      { to: '/studio/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-      { to: '/studio/agenda', icon: ListTodo, label: 'Agenda' },
+      { to: '/studio/dashboard', icon: Grid3X3, label: 'Dashboard' },
+      { to: '/studio/agenda', icon: CalendarClock, label: 'Agenda' },
     ],
   },
   {
-    label: 'Patrimonio',
+    label: 'Gestione',
     items: [
-      { to: '/studio/immobili', icon: Building2, label: 'Immobili' },
-      { to: '/studio/condomini', icon: UserCircle, label: 'Condomini' },
-      { to: '/studio/documenti', icon: FolderOpen, label: 'Documenti' },
-      { to: '/studio/assemblee', icon: Users, label: 'Assemblee', pro: true },
-    ],
-  },
-  {
-    label: 'Economia',
-    items: [
-      { to: '/studio/finanze', icon: Wallet, label: 'Finanze', pro: true },
-      { to: '/studio/morosita', icon: AlertTriangle, label: 'Morosita', pro: true },
-    ],
-  },
-  {
-    label: 'Operativo',
-    items: [
-      { to: '/studio/manutenzioni', icon: Wrench, label: 'Manutenzioni' },
+      { to: '/studio/immobili', icon: Building, label: 'Immobili' },
+      { to: '/studio/condomini', icon: Contact, label: 'Condomini' },
       { to: '/studio/fornitori', icon: Truck, label: 'Fornitori' },
-      { to: '/studio/ticket', icon: MessageSquare, label: 'Ticket', pro: true, badge: tickets.filter(t => t.status === 'aperto').length || null },
-      { to: '/studio/comunicazioni', icon: Send, label: 'Comunicazioni', pro: true },
+      { to: '/studio/documenti', icon: FolderClosed, label: 'Documenti' },
+    ],
+  },
+  {
+    label: 'Finanza',
+    items: [
+      { to: '/studio/finanze', icon: Wallet2, label: 'Finanze', pro: true },
+      { to: '/studio/morosita', icon: TriangleAlert, label: 'Morosita', pro: true },
+    ],
+  },
+  {
+    label: 'Attivita',
+    items: [
+      { to: '/studio/assemblee', icon: UsersRound, label: 'Assemblee', pro: true },
+      { to: '/studio/manutenzioni', icon: PenTool, label: 'Manutenzioni' },
+      { to: '/studio/ticket', icon: MessagesSquare, label: 'Ticket', pro: true, badge: tickets.filter(t => t.status === 'aperto').length || null },
+      { to: '/studio/comunicazioni', icon: SendHorizonal, label: 'Comunicazioni', pro: true },
     ],
   },
 ]
@@ -117,7 +117,7 @@ export default function StudioSidebar({ collapsed, onToggle }) {
                             {item.label}
                           </span>
                           {locked && (
-                            <Lock className="ml-auto h-3 w-3 text-gray-300 flex-shrink-0" />
+                            <LockKeyhole className="ml-auto h-3 w-3 text-gray-300 flex-shrink-0" />
                           )}
                           {!locked && item.badge && (
                             <span className="ml-auto flex-shrink-0 h-5 min-w-[20px] px-1.5 rounded-full text-[10px] font-bold text-white bg-primary-400 flex items-center justify-center">
@@ -128,7 +128,7 @@ export default function StudioSidebar({ collapsed, onToggle }) {
                       )}
                       {collapsed && locked && (
                         <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-gray-200 flex items-center justify-center">
-                          <Lock className="h-2.5 w-2.5 text-gray-400" />
+                          <LockKeyhole className="h-2.5 w-2.5 text-gray-400" />
                         </span>
                       )}
                       {collapsed && !locked && item.badge && (
@@ -169,7 +169,7 @@ export default function StudioSidebar({ collapsed, onToggle }) {
           )}
           aria-label={collapsed ? 'Espandi' : 'Comprimi'}
         >
-          {collapsed ? <ChevronRight className="h-4 w-4" /> : <><ChevronLeft className="h-4 w-4 flex-shrink-0" /><span className="text-xs font-medium">Comprimi</span></>}
+          {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <><PanelLeftClose className="h-4 w-4 flex-shrink-0" /><span className="text-xs font-medium">Comprimi</span></>}
         </button>
       </div>
     </aside>
