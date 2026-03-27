@@ -33,12 +33,12 @@ export default function Modal({ open, onClose, title, size = 'md', children, foo
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in"
       onClick={(e) => e.target === overlayRef.current && onClose?.()}
     >
       <div
         className={cn(
-          'w-full bg-white rounded-2xl shadow-xl animate-modal-enter',
+          'w-full bg-white rounded-xl shadow-xl animate-modal-enter',
           sizes[size]
         )}
         role="dialog"

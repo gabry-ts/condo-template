@@ -2,7 +2,7 @@ import { cn } from '../../lib/cn'
 
 export function Table({ className, children }) {
   return (
-    <div className="w-full overflow-x-auto rounded-2xl border border-gray-200">
+    <div className="w-full overflow-x-auto rounded-xl border border-gray-200">
       <table className={cn('w-full text-sm', className)}>{children}</table>
     </div>
   )

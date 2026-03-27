@@ -77,26 +77,36 @@ export default function QrActivation() {
   const currentStepIndex = step === 'scan' ? 0 : step === 'password' ? 1 : 2
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-500 to-primary-600 px-4 py-8">
+    <div className="min-h-screen flex">
+      {/* Left side - branding (desktop only) */}
+      <div className="hidden lg:flex lg:w-1/2 bg-primary-500 items-center justify-center p-12">
+        <div className="text-center text-white max-w-md">
+          <div className="text-5xl font-bold font-display mb-4">Domea</div>
+          <p className="text-primary-100 text-lg">Attiva il tuo account condomino in pochi semplici passaggi</p>
+        </div>
+      </div>
+
+      {/* Right side - content */}
+      <div className="flex-1 flex items-center justify-center px-6 py-12 bg-gray-50">
       <div className="w-full max-w-md">
         {/* Stepper */}
         <div className="flex items-center justify-center gap-2 mb-6">
           {steps.map((s, i) => (
             <div key={s} className="flex items-center gap-2">
-              {i > 0 && <div className={`w-8 h-0.5 ${i <= currentStepIndex ? 'bg-white' : 'bg-white/30'}`} />}
+              {i > 0 && <div className={`w-8 h-0.5 ${i <= currentStepIndex ? 'bg-primary-500' : 'bg-gray-300'}`} />}
               <div className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold ${
-                i < currentStepIndex ? 'bg-white text-primary-500' : i === currentStepIndex ? 'bg-white/20 text-white border-2 border-white' : 'bg-white/10 text-white/50'
+                i < currentStepIndex ? 'bg-primary-500 text-white' : i === currentStepIndex ? 'bg-primary-100 text-primary-500 border-2 border-primary-400' : 'bg-gray-200 text-gray-400'
               }`}>
                 {i < currentStepIndex ? <Check className="h-3.5 w-3.5" /> : i + 1}
               </div>
-              <span className={`text-xs font-medium hidden sm:inline ${i <= currentStepIndex ? 'text-white' : 'text-white/50'}`}>{s}</span>
+              <span className={`text-xs font-medium hidden sm:inline ${i <= currentStepIndex ? 'text-primary-600' : 'text-gray-400'}`}>{s}</span>
             </div>
           ))}
         </div>
 
         {/* Step 1: Scan/Code */}
         {step === 'scan' && (
-          <Card className="shadow-2xl">
+          <Card className="shadow-xl border-0">
             <CardHeader className="items-center text-center">
               <Badge variant="primary" className="mb-2 text-lg font-bold px-4 py-2">DM</Badge>
               <CardTitle className="text-2xl">Attiva il tuo account</CardTitle>
@@ -119,7 +129,7 @@ export default function QrActivation() {
                 </>
               ) : (
                 <form onSubmit={handleActivate} className="w-full flex flex-col gap-4">
-                  <Input label="Codice di attivazione" placeholder="Es. CZ-A1B2-C3D4-E5F6" value={code} onChange={(e) => setCode(e.target.value)} required />
+                  <Input label="Codice di attivazione" placeholder="Es. DM-A1B2-C3D4-E5F6" value={code} onChange={(e) => setCode(e.target.value)} required />
                   <Button type="submit" size="lg" className="w-full"><QrCode className="h-4 w-4" />Attiva</Button>
                   <button type="button" onClick={() => setShowManual(false)} className="text-sm text-primary-500 hover:underline text-center">Torna alla scansione QR</button>
                 </form>
@@ -130,7 +140,7 @@ export default function QrActivation() {
 
         {/* Step 2: Password */}
         {step === 'password' && (
-          <Card className="shadow-2xl">
+          <Card className="shadow-xl border-0">
             <CardHeader className="items-center text-center">
               <div className="h-12 w-12 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-2">
                 <Shield className="h-6 w-6 text-primary-500" />
@@ -156,7 +166,7 @@ export default function QrActivation() {
 
         {/* Step 3: 2FA Choice */}
         {step === 'twofa' && (
-          <Card className="shadow-2xl">
+          <Card className="shadow-xl border-0">
             <CardHeader className="items-center text-center">
               <div className="h-12 w-12 rounded-2xl bg-accent-50 flex items-center justify-center mx-auto mb-2">
                 <KeyRound className="h-6 w-6 text-accent-500" />
@@ -189,7 +199,7 @@ export default function QrActivation() {
 
         {/* TOTP Setup */}
         {step === 'totpSetup' && (
-          <Card className="shadow-2xl">
+          <Card className="shadow-xl border-0">
             <CardHeader className="items-center text-center">
               <CardTitle className="text-xl">Configura App Authenticator</CardTitle>
               <CardDescription>Scansiona il QR con la tua app authenticator</CardDescription>
@@ -218,7 +228,7 @@ export default function QrActivation() {
 
         {/* Email 2FA Setup */}
         {step === 'emailSetup' && (
-          <Card className="shadow-2xl">
+          <Card className="shadow-xl border-0">
             <CardHeader className="items-center text-center">
               <CardTitle className="text-xl">Verifica via Email</CardTitle>
               <CardDescription>Abbiamo inviato un codice a <strong>{mockEmail}</strong></CardDescription>
@@ -242,7 +252,7 @@ export default function QrActivation() {
 
         {/* Passkey Setup */}
         {step === 'passkeySetup' && (
-          <Card className="shadow-2xl">
+          <Card className="shadow-xl border-0">
             <CardHeader className="items-center text-center">
               <CardTitle className="text-xl">Registra Passkey</CardTitle>
               <CardDescription>Usa impronta digitale, Face ID o chiave di sicurezza</CardDescription>
@@ -260,6 +270,7 @@ export default function QrActivation() {
             </CardContent>
           </Card>
         )}
+      </div>
       </div>
     </div>
   )

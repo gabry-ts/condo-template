@@ -1,8 +1,8 @@
 import { cn } from '../../lib/cn'
 
 const variants = {
-  default: 'bg-white border border-gray-200 shadow-sm',
-  elevated: 'bg-white border border-primary-200 shadow-md ring-1 ring-primary-100',
+  default: 'bg-white border border-gray-200',
+  elevated: 'bg-white border border-accent-200 shadow-md ring-1 ring-accent-100',
   muted: 'bg-gray-50 border border-gray-200',
   ai: 'bg-gradient-to-br from-primary-50 to-info-50 border border-primary-200',
   alert: 'bg-warning-50 border border-warning-100',
@@ -14,7 +14,7 @@ export function Card({ variant = 'default', hover = false, className, children, 
   return (
     <div
       className={cn(
-        'rounded-2xl p-6',
+        'rounded-xl p-6',
         variants[variant],
         hover && 'card-hover cursor-pointer',
         className

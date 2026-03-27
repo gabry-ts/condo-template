@@ -9,7 +9,7 @@ const variants = {
   destructive: 'bg-destructive-500 text-white hover:bg-destructive-600',
   success: 'bg-success-500 text-white hover:bg-success-600',
   link: 'text-primary-400 underline-offset-4 hover:underline bg-transparent',
-  pro: 'bg-gradient-to-r from-primary-500 to-primary-400 text-white shadow-md hover:shadow-lg',
+  pro: 'bg-gradient-to-r from-accent-400 to-accent-500 text-white shadow-md hover:shadow-lg',
 }
 
 const sizes = {
@@ -32,8 +32,8 @@ export default function Button({
   return (
     <button
       className={cn(
-        'inline-flex items-center gap-2 font-medium transition-colors duration-150 btn-press focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
-        pill ? 'rounded-full' : 'rounded-xl',
+        'inline-flex items-center gap-2 font-medium transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
+        pill ? 'rounded-full' : 'rounded-lg',
         variants[variant],
         sizes[size],
         className
