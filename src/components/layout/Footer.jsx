@@ -15,7 +15,6 @@ const columns = [
       { label: 'FAQ', to: '/faq' },
       { label: 'Contattaci', to: '/contattaci' },
       { label: 'Webinar', to: '/webinar' },
-      { label: 'Attivazione QR', to: '/attivazione-qr' },
     ],
   },
   {
@@ -30,23 +29,23 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-primary-600 text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="h-9 w-9 rounded-xl bg-primary-400 flex items-center justify-center">
+              <div className="h-9 w-9 rounded-xl bg-white/15 flex items-center justify-center">
                 <span className="text-white font-bold text-sm">DM</span>
               </div>
-              <span className="text-lg font-bold">Domea</span>
+              <span className="text-lg font-display font-bold">Domea</span>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed max-w-[200px]">
+            <p className="text-sm text-primary-200 leading-relaxed max-w-[200px]">
               La piattaforma digitale per la gestione condominiale moderna.
             </p>
           </div>
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-primary-300 mb-4">
                 {col.title}
               </h3>
               <ul className="space-y-3">
@@ -54,7 +53,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       to={link.to}
-                      className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                      className="text-sm text-primary-200 hover:text-white transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -64,11 +63,11 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-14 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-500">
+        <div className="mt-14 pt-8 border-t border-primary-500/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-primary-300">
             &copy; {new Date().getFullYear()} Domea. Tutti i diritti riservati.
           </p>
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-primary-400">
             Made in Italy
           </p>
         </div>
