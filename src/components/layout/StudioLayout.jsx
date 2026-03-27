@@ -31,7 +31,7 @@ export default function StudioLayout() {
       {/* Top bar — full width, always on top */}
       <header className={cn(
         'fixed top-0 right-0 z-30 h-14 flex items-center justify-between transition-all duration-300',
-        'bg-white border-b border-gray-200/80',
+        'bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]',
         collapsed ? 'md:left-[60px]' : 'md:left-[220px]',
         'left-0'
       )}>
@@ -69,7 +69,7 @@ export default function StudioLayout() {
             </button>
 
             {profileOpen && (
-              <div className="absolute right-0 top-full mt-1 w-52 bg-white rounded-xl border border-gray-200/80 shadow-lg z-50 animate-fade-in overflow-hidden">
+              <div className="absolute right-0 top-full mt-1.5 w-52 bg-white rounded-2xl border border-gray-100 shadow-xl shadow-gray-200/60 z-50 animate-fade-in overflow-hidden">
                 <div className="px-3.5 py-2.5 border-b border-gray-100">
                   <p className="text-sm font-semibold text-gray-800 truncate">{user?.name}</p>
                   <p className="text-[11px] text-gray-500 truncate">{user?.email}</p>

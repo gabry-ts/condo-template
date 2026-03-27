@@ -58,23 +58,23 @@ export default function StudioSidebar({ collapsed, onToggle }) {
     <aside
       className={cn(
         'fixed top-0 left-0 h-screen flex flex-col transition-all duration-300 ease-out z-40 overflow-hidden',
-        'bg-gradient-to-b from-primary-500 to-primary-600',
+        'bg-white border-r border-gray-200',
         collapsed ? 'w-[60px]' : 'w-[220px]'
       )}
     >
       {/* Logo */}
-      <div className={cn('flex items-center h-16 border-b border-white/8', collapsed ? 'px-2 justify-center' : 'px-4')}>
+      <div className={cn('flex items-center h-16 border-b border-gray-100', collapsed ? 'px-2 justify-center' : 'px-4')}>
         <Link to="/" className="flex items-center gap-2.5">
           <div className={cn(
-            'rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0 backdrop-blur-sm',
+            'rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0',
             collapsed ? 'h-8 w-8' : 'h-9 w-9'
           )}>
             <span className="text-white font-bold text-sm">DM</span>
           </div>
           {!collapsed && (
             <div className="flex flex-col">
-              <span className="text-[13px] font-bold text-white leading-tight">Domea</span>
-              <span className="text-[9px] font-semibold text-primary-200/80 uppercase tracking-widest">Studio</span>
+              <span className="text-[13px] font-bold text-gray-800 leading-tight">Domea</span>
+              <span className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest">Studio</span>
             </div>
           )}
         </Link>
@@ -86,12 +86,12 @@ export default function StudioSidebar({ collapsed, onToggle }) {
           {navSections.map((section) => (
             <div key={section.label}>
               {!collapsed && (
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-primary-300/60 px-3 mb-1.5">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 px-3 mb-1.5">
                   {section.label}
                 </p>
               )}
-              {collapsed && <div className="h-px bg-white/8 mx-1 mb-1.5" />}
-              <div className={collapsed ? 'flex flex-col gap-0.5' : 'flex flex-col gap-1'}>
+              {collapsed && <div className="h-px bg-gray-100 mx-1 mb-1.5" />}
+              <div className={collapsed ? 'flex flex-col gap-0.5' : 'flex flex-col gap-0.5'}>
                 {section.items.map((item) => {
                   const active = isActive(item.to)
                   const locked = item.pro && !isPro
@@ -101,43 +101,40 @@ export default function StudioSidebar({ collapsed, onToggle }) {
                       key={item.to}
                       to={locked ? '/studio/upgrade' : item.to}
                       className={cn(
-                        'flex items-center rounded-xl transition-all duration-150 relative',
+                        'flex items-center rounded-lg transition-all duration-150 relative',
                         collapsed ? 'justify-center w-full h-9' : 'gap-3 px-3 h-10',
                         locked
-                          ? 'text-primary-300/40 hover:bg-white/5'
+                          ? 'text-gray-300 hover:bg-gray-50'
                           : active
-                            ? 'bg-white/15 text-white shadow-sm shadow-black/10'
-                            : 'text-primary-200 hover:bg-white/8 hover:text-white'
+                            ? 'bg-primary-50 text-primary-600 border-l-2 border-primary-500'
+                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'
                       )}
                     >
-                      <item.icon className={cn('h-[18px] w-[18px] flex-shrink-0', active && !locked && 'text-accent-300')} />
+                      <item.icon className={cn('h-[18px] w-[18px] flex-shrink-0', active && !locked && 'text-primary-500')} />
                       {!collapsed && (
                         <>
                           <span className={cn('text-[13px] truncate', active && !locked ? 'font-semibold' : 'font-medium')}>
                             {item.label}
                           </span>
                           {locked && (
-                            <Lock className="ml-auto h-3 w-3 text-primary-300/40 flex-shrink-0" />
+                            <Lock className="ml-auto h-3 w-3 text-gray-300 flex-shrink-0" />
                           )}
                           {!locked && item.badge && (
-                            <span className="ml-auto flex-shrink-0 h-5 min-w-[20px] px-1.5 rounded-full text-[10px] font-bold text-white bg-accent-400 flex items-center justify-center">
+                            <span className="ml-auto flex-shrink-0 h-5 min-w-[20px] px-1.5 rounded-full text-[10px] font-bold text-white bg-primary-400 flex items-center justify-center">
                               {item.badge}
                             </span>
                           )}
                         </>
                       )}
                       {collapsed && locked && (
-                        <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-primary-400/60 flex items-center justify-center">
-                          <Lock className="h-2.5 w-2.5 text-primary-200/60" />
+                        <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-gray-200 flex items-center justify-center">
+                          <Lock className="h-2.5 w-2.5 text-gray-400" />
                         </span>
                       )}
                       {collapsed && !locked && item.badge && (
-                        <span className="absolute -top-0.5 -right-0.5 h-4 min-w-[16px] px-1 rounded-full text-[9px] font-bold text-white bg-accent-400 flex items-center justify-center">
+                        <span className="absolute -top-0.5 -right-0.5 h-4 min-w-[16px] px-1 rounded-full text-[9px] font-bold text-white bg-primary-400 flex items-center justify-center">
                           {item.badge}
                         </span>
-                      )}
-                      {active && !locked && (
-                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-accent-400 rounded-r-full" />
                       )}
                     </Link>
                   )
@@ -155,19 +152,19 @@ export default function StudioSidebar({ collapsed, onToggle }) {
       {/* Upgrade banner for free users */}
       {!isPro && !collapsed && (
         <div className="px-2.5 pb-2">
-          <Link to="/studio/upgrade" className="block p-3 rounded-xl bg-accent-400/20 border border-accent-400/30 hover:bg-accent-400/30 transition-colors">
-            <p className="text-[11px] font-semibold text-accent-300">Passa a Pro</p>
-            <p className="text-[10px] text-primary-200/70 mt-0.5">Sblocca tutte le funzionalita</p>
+          <Link to="/studio/upgrade" className="block p-3 rounded-xl bg-primary-50 border border-primary-100 hover:bg-primary-100 transition-colors">
+            <p className="text-[11px] font-semibold text-primary-600">Passa a Pro</p>
+            <p className="text-[10px] text-gray-500 mt-0.5">Sblocca tutte le funzionalita</p>
           </Link>
         </div>
       )}
 
       {/* Collapse toggle */}
-      <div className={cn('border-t border-white/8 py-3', collapsed ? 'px-1.5' : 'px-2.5')}>
+      <div className={cn('border-t border-gray-100 py-3', collapsed ? 'px-1.5' : 'px-2.5')}>
         <button
           onClick={onToggle}
           className={cn(
-            'flex items-center gap-3 h-9 rounded-xl text-primary-300/70 hover:bg-white/5 hover:text-primary-200 transition-all w-full',
+            'flex items-center gap-3 h-9 rounded-lg text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-all w-full',
             collapsed ? 'justify-center px-0' : 'px-3'
           )}
           aria-label={collapsed ? 'Espandi' : 'Comprimi'}

@@ -35,12 +35,15 @@ export default function BottomNav({ portal = 'studio' }) {
               key={item.to}
               to={item.to}
               className={cn(
-                'flex flex-col items-center justify-center gap-0.5 flex-1 h-full transition-colors',
+                'flex flex-col items-center justify-center gap-0.5 flex-1 h-full transition-colors relative',
                 active ? 'text-primary-500' : 'text-gray-400'
               )}
             >
-              <item.icon className={cn('h-5 w-5', active && 'fill-current')} />
+              <item.icon className="h-5 w-5" />
               <span className="text-[10px] font-medium">{item.label}</span>
+              {active && (
+                <span className="absolute bottom-1.5 h-1 w-1 rounded-full bg-primary-500" />
+              )}
             </Link>
           )
         })}

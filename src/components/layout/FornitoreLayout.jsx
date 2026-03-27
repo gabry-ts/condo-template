@@ -22,10 +22,13 @@ export default function FornitoreLayout() {
           <div className="flex items-center justify-between h-14">
             <div className="flex items-center gap-6">
               <Link to="/" className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-lg bg-fornitore-accent flex items-center justify-center">
+                <div className="h-8 w-8 rounded-lg bg-accent-500 flex items-center justify-center">
                   <span className="text-white font-bold text-xs">DM</span>
                 </div>
-                <span className="text-sm font-bold text-gray-800">Fornitore</span>
+                <div className="flex flex-col">
+                  <span className="text-sm font-bold text-gray-800 leading-tight">Domea</span>
+                  <span className="text-[9px] font-semibold text-gray-400 uppercase tracking-widest">Fornitore</span>
+                </div>
               </Link>
               <nav className="hidden md:flex items-center gap-1">
                 {navItems.map((item) => (
@@ -35,7 +38,7 @@ export default function FornitoreLayout() {
                     className={cn(
                       'flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg transition-colors',
                       location.pathname.startsWith(item.to)
-                        ? 'text-fornitore-accent bg-orange-50'
+                        ? 'text-accent-500 bg-accent-50'
                         : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50'
                     )}
                   >
@@ -70,7 +73,7 @@ export default function FornitoreLayout() {
                 to={item.to}
                 className={cn(
                   'flex flex-col items-center justify-center gap-0.5 flex-1 h-full transition-colors',
-                  active ? 'text-fornitore-accent' : 'text-gray-400'
+                  active ? 'text-accent-500' : 'text-gray-400'
                 )}
               >
                 <item.icon className={cn('h-5 w-5', active && 'fill-current')} />
