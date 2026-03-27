@@ -1,0 +1,60 @@
+export const delinquencies = [
+  {
+    id: 'd1',
+    condominoId: '23',
+    condominoName: 'Lucia Romano',
+    buildingId: 'b1',
+    buildingName: 'Via Roma 15',
+    totalOwed: 1560.00,
+    monthsOverdue: 2,
+    lastPayment: '2025-12-15',
+    status: 'moroso',
+    rates: ['r6'],
+    notifications: [
+      { date: '2026-02-15', type: 'email', message: 'Primo sollecito inviato' },
+      { date: '2026-03-10', type: 'email', message: 'Secondo sollecito inviato' },
+    ],
+  },
+  {
+    id: 'd2',
+    condominoId: '24',
+    condominoName: 'Giovanni Conti',
+    buildingId: 'b2',
+    buildingName: 'Residenza Parco Verde',
+    totalOwed: 3720.00,
+    monthsOverdue: 6,
+    lastPayment: '2025-09-20',
+    status: 'critico',
+    rates: ['r7'],
+    notifications: [
+      { date: '2025-11-01', type: 'email', message: 'Primo sollecito' },
+      { date: '2025-12-15', type: 'email', message: 'Secondo sollecito' },
+      { date: '2026-01-20', type: 'raccomandata', message: 'Raccomandata A/R inviata' },
+      { date: '2026-03-01', type: 'legale', message: 'Pratica legale avviata' },
+    ],
+  },
+  {
+    id: 'd3',
+    condominoId: '27',
+    condominoName: 'Paola Greco',
+    buildingId: 'b3',
+    buildingName: 'Palazzo Vittoria',
+    totalOwed: 420.00,
+    monthsOverdue: 1,
+    lastPayment: '2026-02-01',
+    status: 'in_scadenza',
+    rates: [],
+    notifications: [],
+  },
+]
+
+export const delinquencySummary = {
+  totalAmount: 13520.00,
+  totalMorosi: 5,
+  criticalCount: 1,
+  byBuilding: [
+    { buildingId: 'b1', name: 'Via Roma 15', amount: 3200.00, count: 2 },
+    { buildingId: 'b2', name: 'Residenza Parco Verde', amount: 8500.00, count: 3 },
+    { buildingId: 'b4', name: 'Condominio Aurora', amount: 1800.00, count: 1 },
+  ],
+}
