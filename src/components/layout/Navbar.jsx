@@ -6,7 +6,6 @@ import Button from '../ui/Button'
 
 const links = [
   { to: '/faq', label: 'FAQ' },
-  { to: '/webinar', label: 'Webinar' },
   { to: '/contattaci', label: 'Contattaci' },
 ]
 

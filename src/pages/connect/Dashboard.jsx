@@ -62,49 +62,34 @@ export default function Dashboard() {
   ]
 
   const extraNav = [
-    { label: 'Segnalazioni', icon: MessageSquare, to: '/connect/segnalazioni', color: 'bg-orange-50 text-orange-600' },
-    { label: 'Comunicazioni', icon: Mail, to: '/connect/comunicazioni', color: 'bg-violet-50 text-violet-600' },
-    { label: 'Fornitori', icon: Truck, to: '/connect/fornitori', color: 'bg-amber-50 text-amber-600' },
-    { label: 'Manutenzioni', icon: Wrench, to: '/connect/manutenzioni', color: 'bg-blue-50 text-blue-600' },
+    { label: 'Segnalazioni', icon: MessageSquare, to: '/connect/segnalazioni', color: 'bg-orange-100 text-orange-600' },
+    { label: 'Comunicazioni', icon: Mail, to: '/connect/comunicazioni', color: 'bg-violet-100 text-violet-600' },
+    { label: 'Fornitori', icon: Truck, to: '/connect/fornitori', color: 'bg-amber-100 text-amber-600' },
+    { label: 'Manutenzioni', icon: Wrench, to: '/connect/manutenzioni', color: 'bg-blue-100 text-blue-600' },
     { label: 'Profilo', icon: UserCircle, to: '/connect/profilo', color: 'bg-gray-100 text-gray-600' },
   ]
 
   return (
     <div className="space-y-6">
       {/* Hero Card */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-400 to-primary-300 p-6 text-white">
-        <div className="relative z-10">
-          <p className="text-primary-100 text-sm font-medium">{myBuilding?.name}</p>
-          <h1 className="text-2xl font-bold mt-1">
-            {myUnit?.number}, Piano {myUnit?.floor}
-          </h1>
-          <p className="text-primary-100 text-sm mt-1">{myBuilding?.address}</p>
-        </div>
-        <svg
-          className="absolute bottom-0 left-0 right-0 w-full"
-          viewBox="0 0 400 40"
-          preserveAspectRatio="none"
-          style={{ height: '40px' }}
-        >
-          <path
-            d="M0,20 C100,40 300,0 400,20 L400,40 L0,40 Z"
-            fill="rgba(255,255,255,0.08)"
-          />
-        </svg>
+      <div className="relative rounded-2xl bg-white border-l-4 border-primary-400 p-5 shadow-sm">
+        <p className="text-sm font-medium text-primary-500">{myBuilding?.name}</p>
+        <h1 className="text-2xl sm:text-3xl font-display font-bold text-gray-800 mt-1">
+          {myUnit?.number}, Piano {myUnit?.floor}
+        </h1>
+        <p className="text-sm text-gray-500 mt-1">{myBuilding?.address}</p>
       </div>
 
-      {/* Quick Actions */}
-      <div className="flex gap-3 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-hide">
+      {/* Quick Actions — pill style */}
+      <div className="flex gap-2.5 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-hide">
         {quickActions.map((action) => (
           <Link
             key={action.label}
             to={action.to}
-            className="flex flex-col items-center gap-2 min-w-[72px]"
+            className={`inline-flex items-center gap-2 px-5 py-3 rounded-full ${action.color} text-sm font-semibold shadow-sm whitespace-nowrap transition-transform active:scale-95`}
           >
-            <div className={`h-14 w-14 rounded-full ${action.color} flex items-center justify-center shadow-sm transition-transform active:scale-95`}>
-              <action.icon className="h-6 w-6" />
-            </div>
-            <span className="text-xs font-medium text-gray-600 text-center whitespace-nowrap">{action.label}</span>
+            <action.icon className="h-4 w-4" />
+            {action.label}
           </Link>
         ))}
       </div>
@@ -139,7 +124,7 @@ export default function Dashboard() {
             </div>
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-2xl sm:text-4xl font-mono font-bold text-gray-800">
+                <p className="text-3xl sm:text-4xl font-display font-bold text-gray-800">
                   {nextRate.amount.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' })}
                 </p>
                 <p className="text-sm text-gray-500 mt-1 flex items-center gap-1.5">
@@ -171,7 +156,7 @@ export default function Dashboard() {
       {/* Recent Activity */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-lg font-semibold text-gray-800">Attivita recente</h2>
+          <h2 className="text-lg font-display font-semibold text-gray-800">Attivita recente</h2>
         </div>
         <div className="space-y-3">
           {recentNotifications.map((notif, i) => {
@@ -210,20 +195,20 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Extra Navigation Grid */}
+      {/* Extra Navigation — horizontal scrolling pills */}
       <div>
-        <h2 className="text-lg font-semibold text-gray-800 mb-3">Altro</h2>
-        <div className="grid grid-cols-3 gap-3">
+        <h2 className="text-lg font-display font-semibold text-gray-800 mb-3">Altro</h2>
+        <div className="flex gap-2.5 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-hide">
           {extraNav.map((item) => (
             <Link
               key={item.label}
               to={item.to}
-              className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm active:scale-95 transition-transform"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-gray-200 shadow-sm whitespace-nowrap active:scale-95 transition-transform"
             >
-              <div className={`h-11 w-11 rounded-xl ${item.color} flex items-center justify-center`}>
-                <item.icon className="h-5 w-5" />
+              <div className={`h-7 w-7 rounded-full ${item.color} flex items-center justify-center`}>
+                <item.icon className="h-3.5 w-3.5" />
               </div>
-              <span className="text-xs font-medium text-gray-600">{item.label}</span>
+              <span className="text-sm font-medium text-gray-700">{item.label}</span>
             </Link>
           ))}
         </div>

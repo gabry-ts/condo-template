@@ -23,7 +23,7 @@ export default function PageHeader({ title, description, breadcrumbs, actions, c
       )}
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800 tracking-tight">{title}</h1>
+          <h1 className="text-3xl font-display font-bold text-gray-800 tracking-tight">{title}</h1>
           {description && (
             <p className="text-base text-gray-500 mt-1">{description}</p>
           )}

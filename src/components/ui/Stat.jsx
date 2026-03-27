@@ -16,7 +16,7 @@ export default function Stat({
       <div className="flex items-start justify-between gap-3">
         <div className="flex flex-col gap-1 min-w-0">
           <span className="text-label text-gray-500 truncate">{label}</span>
-          <span className="text-xl sm:text-2xl lg:text-3xl font-bold font-mono text-gray-800 whitespace-nowrap">{value}</span>
+          <span className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-gray-800 whitespace-nowrap">{value}</span>
           {trend && (
             <span
               className={cn(

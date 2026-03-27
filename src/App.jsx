@@ -12,9 +12,11 @@ import SuperuserLayout from './components/layout/SuperuserLayout'
 // Landing
 import Home from './pages/landing/Home'
 import Faq from './pages/landing/Faq'
-import Webinar from './pages/landing/Webinar'
 import Contact from './pages/landing/Contact'
 import Incentivi from './pages/landing/Incentivi'
+import Privacy from './pages/landing/Privacy'
+import Terms from './pages/landing/Terms'
+import Cookies from './pages/landing/Cookies'
 
 // Auth
 import Login from './pages/auth/Login'
@@ -126,7 +128,9 @@ export default function App() {
         {/* Landing */}
         <Route path="/" element={<Home />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/webinar" element={<Webinar />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/termini" element={<Terms />} />
+        <Route path="/cookie" element={<Cookies />} />
         <Route path="/contattaci" element={<Contact />} />
         <Route path="/incentivi" element={<Incentivi />} />
 

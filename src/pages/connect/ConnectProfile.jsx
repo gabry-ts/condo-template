@@ -39,18 +39,21 @@ export default function ConnectProfile() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title="Profilo" description="Gestisci il tuo account" />
+      {/* Avatar header with colored band */}
+      <div className="relative -mx-4 sm:-mx-6 -mt-6 mb-2">
+        <div className="h-28 bg-gradient-to-r from-primary-500 to-primary-400 rounded-b-3xl" />
+        <div className="absolute left-1/2 -translate-x-1/2 -bottom-10 flex flex-col items-center">
+          <Avatar name={condomino.name} size="xl" className="ring-4 ring-white shadow-lg" />
+        </div>
+      </div>
+      <div className="text-center pt-8 pb-2">
+        <h1 className="text-2xl font-display font-bold text-gray-800">{condomino.name}</h1>
+        <p className="text-sm text-gray-500 mt-0.5">{condomino.email}</p>
+      </div>
 
       {/* Info personali */}
       <Card>
         <CardContent>
-          <div className="flex items-center gap-5 mb-6 pt-2">
-            <Avatar name={condomino.name} size="xl" />
-            <div>
-              <h2 className="text-xl font-bold text-gray-800">{condomino.name}</h2>
-              <p className="text-sm text-gray-500">{condomino.email}</p>
-            </div>
-          </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input label="Nome completo" value={form.name} onChange={handleChange('name')} />
             <Input label="Email" type="email" value={form.email} onChange={handleChange('email')} />
